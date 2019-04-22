@@ -22,7 +22,7 @@ mongoose.connect(dbConfig.url, {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
 });
-
+mongoose.set('useCreateIndex', true)
 
 // define a simple route
 app.get('/', (req, res) => {

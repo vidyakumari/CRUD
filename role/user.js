@@ -5,8 +5,12 @@ const userSchema = mongoose.Schema({
     email: String,
     phone: Number,
     password: String,
-    address: Array,
+    location: {
+        type: {type: String},
+        coordinates: []
+    },
     roles: Number
 });
 
+userSchema.index({location: '2dsphere'})
 module.exports = mongoose.model('user', userSchema);

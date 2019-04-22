@@ -7,19 +7,19 @@ const jobSchema = mongoose.Schema({
     },
     Profile: {
         type: String,
-        require: true
+        required: true
     },
     Designation: {
         type: String,
-        require: true
+        required: true
     },
     Salary: {
         type: String,
-        require: true
+        required: true
     },
-    Job_location: {
-        type: Array,
-        require: true
+    location: {
+        type: {type: String, required: true},
+       coordinates: []
     }
 },
 {
@@ -27,4 +27,5 @@ const jobSchema = mongoose.Schema({
 }
 )
 
+jobSchema.index({location: '2dsphere'})
 module.exports = mongoose.model('jobs', jobSchema);
